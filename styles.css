@@ -1,0 +1,40 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#container {
+    height: 250px;
+    width: 250px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #cbd5e1;
+    border: 5px solid #334155;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px #64748b;
+}
+
+.errorDiv {
+    color: red;
+    border: 2px dashed red;
+}

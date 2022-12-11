@@ -10,6 +10,14 @@ async function getWeather() {
         formatWeatherData(weatherData);
     } catch (error) {
         console.log(`Error: ${error}`)
+        const infoDiv = document.getElementById('info');
+        infoDiv.innerHTML = '';
+
+        let errorDiv = document.createElement('div');
+        errorDiv.setAttribute('class', 'errorDiv');
+        errorDiv.innerText = 'Error! City not found, please try again. Consider including the country for improved accuracy.'
+
+        infoDiv.append(errorDiv);
     }
 };
 
@@ -31,10 +39,10 @@ function updateDOM(array) {
     tempDiv.innerText = `Temperature: ${array[1]}°F`;
 
     let tempMinDiv = document.createElement('div');
-    tempMinDiv.innerText = `Low Temperature: ${array[2]}°F`;
+    tempMinDiv.innerText = `Low: ${array[2]}°F`;
 
     let tempMaxDiv = document.createElement('div');
-    tempMaxDiv.innerText = `High Temperature: ${array[3]}°F`;
+    tempMaxDiv.innerText = `High: ${array[3]}°F`;
 
     let descriptionDiv = document.createElement('div');
     descriptionDiv.innerText = `Weather Description: ${array[4]}`;
