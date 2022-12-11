@@ -8,32 +8,36 @@ async function getWeather() {
         const weatherData = await response.json();
 
         formatWeatherData(weatherData);
-        //info.innerText = weatherData.data.images.original.url; //reformat to match api and info i need
     } catch (error) {
         console.log(`Error: ${error}`)
     }
 };
 
-async function formatWeatherData(weatherData) {
+function formatWeatherData(weatherData) {
     const specificData = [weatherData.name, weatherData.main.temp, weatherData.main.temp_min, weatherData.main.temp_max, weatherData.weather[0].description];
     console.log(specificData);
+
+    updateDOM(specificData)
 }
 
+function updateDOM(array) {
+    const infoDiv = document.getElementById('info');
+    infoDiv.innerHTML = '';
 
-/*function newImage() {
-    img.src = '';
+    let nameDiv = document.createElement('div');
+    nameDiv.innerText = `City: ${array[0]}`;
 
-    let term = document.getElementById('search').value;
-        console.log(term);
+    let tempDiv = document.createElement('div');
+    tempDiv.innerText = `Temperature: ${array[1]}°F`;
 
-    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=uoLOtF04ylcUTcPiWUrWI0UUMTOt4CPZ&s=${term}`, { mode: 'cors' })
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (response) {
-        img.src = response.data.images.original.url;
-    })
-    .catch((error) => {
-        console.log(`Error: ${error}`)
-    });
-} */
+    let tempMinDiv = document.createElement('div');
+    tempMinDiv.innerText = `Low Temperature: ${array[2]}°F`;
+
+    let tempMaxDiv = document.createElement('div');
+    tempMaxDiv.innerText = `High Temperature: ${array[3]}°F`;
+
+    let descriptionDiv = document.createElement('div');
+    descriptionDiv.innerText = `Weather Description: ${array[4]}`;
+
+    infoDiv.append(nameDiv, tempDiv, tempMinDiv, tempMaxDiv, descriptionDiv);
+}
